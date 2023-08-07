@@ -38,10 +38,10 @@ jobs:
 
       - name: "Setup LuaVM"    
         run: |
-          $env:Path += ";" + $env:LOCALAPPDATA + "\LuaVM;" + $env:LOCALAPPDATA + "\LuaVM\externals\bin;" + $env:LOCALAPPDATA + "\LuaVM\versions\5.3" 
-          luavm use 5.3 
+          $env:Path += ";" + $env:LOCALAPPDATA + "\LuaVM;" + $env:LOCALAPPDATA + "\LuaVM\externals\bin;" + $env:LOCALAPPDATA + "\LuaVM\versions\5.4" 
+          luavm use 5.4 
           lua -v
-          echo $env:LOCALAPPDATA"\LuaVM;"$env:LOCALAPPDATA"\LuaVM\externals\bin;"$env:LOCALAPPDATA"\LuaVM\versions\5.3" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+          echo $env:LOCALAPPDATA"\LuaVM;"$env:LOCALAPPDATA"\LuaVM\externals\bin;"$env:LOCALAPPDATA"\LuaVM\versions\5.4" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
 
 
       - name: "Copy Libs"
@@ -95,7 +95,7 @@ jobs:
       #     mkdir wxlua/wxlua/wxlua-build
       #     pushd .
       #     cd wxlua/wxlua/wxlua-build
-      #     cmake .. -DCMAKE_BUILD_TYPE=Release  -DwxWidgets_ROOT_DIR="$env:GITHUB_WORKSPACE"/wxWidgets/ -DwxLua_LUA_LIBRARY_USE_BUILTIN=false -DwxLua_LUA_INCLUDE_DIR="$env:LOCALAPPDATA"\LUAVM\versions\5.3\include -DwxLua_LUA_LIBRARY="$env:LOCALAPPDATA"\LUAVM\versions\5.3\lua53.lib
+      #     cmake .. -DCMAKE_BUILD_TYPE=Release  -DwxWidgets_ROOT_DIR="$env:GITHUB_WORKSPACE"/wxWidgets/ -DwxLua_LUA_LIBRARY_USE_BUILTIN=false -DwxLua_LUA_INCLUDE_DIR="$env:LOCALAPPDATA"\LUAVM\versions\5.4\include -DwxLua_LUA_LIBRARY="$env:LOCALAPPDATA"\LUAVM\versions\5.4\lua54.lib
       #     cmake --build . --config Release
       #     popd
 
@@ -103,7 +103,7 @@ jobs:
 
       # - name: "Copy wxLua"   
       #   run: |
-      #     cp wxlua/wxlua/wxlua-build/bin/Release/wx.dll $env:LOCALAPPDATA"\LuaVM\versions\5.3\cmod"
+      #     cp wxlua/wxlua/wxlua-build/bin/Release/wx.dll $env:LOCALAPPDATA"\LuaVM\versions\5.4\cmod"
       #     mkdir tests/wxlua
       #     mkdir docs/wxlua
       #     cp -r wxlua/wxlua/samples/* tests/wxlua
@@ -594,8 +594,8 @@ jobs:
           cp -r bin/*.DLL archive/bin
           cp -r lua/* archive/lua
           cp -r docs/* archive/docs
-          cp -r  $env:LOCALAPPDATA"\LuaVM\versions\5.3\cmod\*" archive/bin
-          cp -r   $env:LOCALAPPDATA"\LuaVM\versions\5.3\lua\*" archive/lua
+          cp -r  $env:LOCALAPPDATA"\LuaVM\versions\5.4\cmod\*" archive/bin
+          cp -r   $env:LOCALAPPDATA"\LuaVM\versions\5.4\lua\*" archive/lua
           cp -r  tests/* archive/tests
 
           Remove-Item archive\lua\luarocks -Recurse
